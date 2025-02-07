@@ -1,0 +1,265 @@
+#app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+header {
+  background-color: #3e945c;
+  color: white;
+  padding: 20px 0;
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* width: 100%; */
+  /* z-index: 1000; */
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.form-container {
+  /* position: fixed; */
+  /* top: 125px; header 아래 위치 */
+  /* left: 0; */
+  /* width: 100%; */
+  /* background: rgb(255, 255, 255); */
+  /* z-index: 999; */
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+  padding: 8px, 12px;
+  font-size: 1rems;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.form-container input {
+  width: 400px;
+}
+
+.form-container input[type='date'] {
+  width: 120px;
+}
+
+.form-container button {
+  background-color: #3e945c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form-container button:hover .scroll-to-top:hover {
+  background-color: #28603c;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.todo-list {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.todo-header-row {
+  display: flex;
+  background-color: #d3d3d3;
+  font-weight: bold;
+  padding: 10px;
+  /* width: 60%; */
+  /* position: fixed; */
+  /* top: 247px; */
+  /* z-index: 998; */
+}
+
+.todo-status-header {
+  flex: 0.1;
+}
+
+.todo-text-header {
+  flex: 0.4;
+}
+
+.todo-category-header {
+  flex: 0.17;
+}
+
+.todo-start-date-header {
+  flex: 0.11;
+}
+
+.todo-deadline-header {
+  flex: 0.11;
+}
+
+.todo-remove-header {
+  flex: 0.11;
+}
+
+.todo-wrapper {
+  /* padding-top: 250px; */
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.tood-status,
+.todo-text,
+.todo-category,
+.todo-deadline,
+.todo-remove {
+  flex: 1;
+  text-align: center;
+}
+
+.todo-status {
+  flex: 0.1;
+}
+
+.todo-text {
+  flex: 0.3;
+}
+
+.todo-category {
+  flex: 0.2;
+}
+
+.todo-start-date {
+  flex: 0.1;
+}
+
+.todo-deadline {
+  flex: 0.1;
+}
+
+.todo-remove {
+  flex: 0.1;
+}
+
+.status-red {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.status-orange {
+  background-color: #ffa940;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.status-green {
+  background-color: #52c41a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(114, 114, 114, 0.75);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+input[type='date']:hover + .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.editButton {
+  border: none; /* 테두리 제거 */
+  outline: none; /* 클릭 후 외곽선 제거 */
+  background: none; /* 배경 제거 (필요하면 추가) */
+  cursor: pointer; /* 버튼 모양 유지 */
+}
+
+.editTodoText {
+  border: 1px solid #ccc; /* 연한 테두리 */
+  border-radius: 4px; /* 모서리 둥글게 */
+  padding: 8px; /* 내부 여백 */
+  font-size: 14px; /* 글자 크기 */
+  width: 100%; /* 부모 요소에 맞게 넓이 설정 */
+  box-sizing: border-box; /* 테두리와 패딩 포함한 크기 계산 */
+  outline: none; /* 클릭 시 외곽선 제거 */
+  transition: border 0.2s ease; /* 테두리 전환 효과 */
+}
+
+.editTodoText:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색 변경 */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 포커스 시 부드러운 그림자 */
+}
+
+.todo-header-sort-button {
+  all: unset;
+  cursor: pointer;
+  width: 1x; /* 원하는 크기로 조정 */
+  height: 10px;
+  font-size: 16px; /* 이모지 크기 조정 */
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #3e945c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.scroll-to-top:hover {
+  background-color: #3e945c;
+}

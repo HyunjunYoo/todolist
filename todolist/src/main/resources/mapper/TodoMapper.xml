@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cspi.backend.mapper.TodoMapper">
+
+    <select id="getAllTodos" resultType="com.cspi.backend.model.Todo">
+    /* TodoMapper, getAllTodos */
+        SELECT  ID               /* 아이디 */
+              , STATUS           /* 상태 */
+              , TODO_TEXT        /* 할일 */
+              , CATEGORY         /* 항목 */
+              , START_DATE       /* 시작일 */
+              , END_DATE         /* 마감일 */
+          FROM TODO
+    </select>
+
+    <select id="findById" resultType="com.cspi.backend.model.Todo">
+    /* TodoMapper, findById */
+        SELECT ID               /* 아이디 */
+             , STATUS           /* 상태 */
+             , TODO_TEXT        /* 할일 */
+             , CATEGORY         /* 항목 */
+             , START_DATE       /* 시작일 */
+             , END_DATE         /* 마감일 */
+          FROM TODO
+         WHERE ID           = #{id}
+    </select>
+
+    <select id="searchTodos" parameterType="com.cspi.backend.model.Todo" resultType="com.cspi.backend.model.Todo">
+    /* TodoMapper, searchTodos */
+        SELECT ID               /* 아이디 */
+             , STATUS           /* 상태 */
+             , TODO_TEXT        /* 할일 */
+             , CATEGORY         /* 항목 */
+             , START_DATE       /* 시작일 */
+             , END_DATE         /* 마감일 */
+          FROM TODO
+         WHERE 1=1
+           <if test="status != null and status != ''">
+           AND STATUS     = #{status}
+           </if>
+           <if test="todoText != null and todoText != ''">
+           AND TODO_TEXT LIKE '%' || #{todoText} || '%'
+           </if>
+           <if test="category != null and category != ''">
+           AND CATEGORY   = #{category}
+           </if>
+           <if test="startDate != null and startDate != ''">
+           AND START_DATE >= #{startDate}
+           </if>
+    </select>
+
+    <insert id="insertTodo" parameterType="com.cspi.backend.model.Todo" useGeneratedKeys="true" keyProperty="id">
+    /* TodoMapper, insertTodo */
+        INSERT INTO TODO
+                 (
+                    STATUS
+                  , TODO_TEXT
+                  , CATEGORY
+                  , START_DATE
+                  , END_DATE
+                 )
+             VALUES
+                 (
+                    #{status}
+                  , #{todoText}
+                  , #{category}
+                  , #{startDate}
+                  , #{endDate} )
+    </insert>
+
+    <update id="updateTodoById" parameterType="com.cspi.backend.model.Todo">
+    /* TodoMapper, updateTodoById */
+        UPDATE TODO
+           SET STATUS       = #{status}
+             , TODO_TEXT    = #{todoText}
+             , START_DATE   = #{startDate}
+             , END_DATE     = #{endDate}
+         WHERE ID           = #{id}
+    </update>
+
+    <delete id="deleteTodoById" parameterType="long">
+    /* TodoMapper, deleteTodoById */
+        DELETE
+          FROM TODO
+         WHERE 1=1
+           AND ID           = #{id}
+    </delete>
+</mapper>

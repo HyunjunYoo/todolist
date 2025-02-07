@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:todo  # 인메모리 방식
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    initialization-mode: always  # schema.sql 항상 실행하며 DB 초기화
+
+  h2:
+    console:
+      enabled: true # H2 콘솔 활성화
+
+  sql:
+    init:
+      mode: always
+
+  jpa:
+    hibernate:
+      ddl-auto: none  # Hibernate의 DDL 자동 생성 기능 비활성화
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.cspi.todolist.model
+  configuration:
+    map-underscore-to-camel-case: true
