@@ -1,0 +1,13 @@
+ 
+# Node.js 관련 (Vue3 프로젝트)
+node_modules/
+dist/
+
+# Java/Spring Boot 관련
+target/
+*.jar
+*.war
+
+# IDE 설정 파일
+.idea/
+.vscode/
